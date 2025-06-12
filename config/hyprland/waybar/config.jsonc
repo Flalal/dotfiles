@@ -141,6 +141,7 @@
     ]
   },
   "bluetooth": {
+    "on-click": "overskride",
     "format": "<span color='#00BFFF'>  </span>{status} ",
     "format-connected": "<span color='#00BFFF'>  </span>{device_alias} ",
     "format-connected-battery": "<span color='#00BFFF'>  </span>{device_alias}{device_battery_percentage}% ",
