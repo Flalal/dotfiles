@@ -1,0 +1,11 @@
+[core]
+	excludesFile = ~/.gitignore
+	autocrlf = input
+	editor = nvim
+[init]
+	defaultBranch = main
+[user]
+	email = fflahaut@ff-corp.fr
+	name = Florian Flahaut
+[fetch]
+	prune = true
