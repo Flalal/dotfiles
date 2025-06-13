@@ -6,10 +6,12 @@ btop
 code
 docker-desktop
 eza
+google-cloud-cli
 grim
 hyprland
 hyprlock
 hyprpaper
+intellij-idea-ultimate-edition
 jq
 kitty
 neofetch
@@ -25,8 +27,10 @@ thunar
 ttf-jetbrains-mono-nerd
 unrar
 unzip
+vesktop-bin
 vivaldi
 waybar
+wireguard-dkms
 wget
 wl-clipboard
 xdg-desktop-portal-hyprland
