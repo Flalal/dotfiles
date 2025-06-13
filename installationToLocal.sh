@@ -11,6 +11,8 @@ cp -r config/hyprland/.config/nvim ~/.config/
 cp -r config/kitty ~/.config/
 
 cp -r config/git/.gitconfig ~/.gitconfig
+cp config/zsh/.zshrc ~/.zshrc
+
 echo "Importaion des configs OK"
 echo "Installation des packages"
 
