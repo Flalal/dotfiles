@@ -136,3 +136,5 @@ if [ -f '/home/florian/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home
 if [ -f '/home/florian/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/florian/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 source <(fzf --zsh)
+
+BROWSER='/usr/bin/vivaldi-stable'

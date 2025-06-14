@@ -8,6 +8,8 @@ cp -r config/hyprland/.config/rofi ~/.config/
 cp -r config/hyprland/.config/hypr ~/.config/
 cp -r config/hyprland/.config/nvim ~/.config/
 
+cp config/mimeapps/mimeapps.list ~/.config/
+
 cp -r config/kitty ~/.config/
 
 cp -r config/git/.gitconfig ~/.gitconfig
