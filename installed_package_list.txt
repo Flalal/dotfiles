@@ -23,6 +23,7 @@ qutebrowser
 rofi-wayland
 sddm
 slurp
+spotify-launcher
 thunar
 ttf-jetbrains-mono-nerd
 unrar
