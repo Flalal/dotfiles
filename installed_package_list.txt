@@ -5,6 +5,7 @@ bluetui
 btop
 code
 docker-desktop
+dunst
 eza
 fzf
 grim
