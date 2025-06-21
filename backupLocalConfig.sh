@@ -10,6 +10,9 @@ cp -r ~/.config/kitty config/
 echo "Mimeapps backup"
 cp ~/.config/mimeapps.list config/mimeapps
 
+echo "Image backup"
+cp ~/Images/wallpaper.jpg Images/wallpaper.jpg
+
 echo "Git backup"
 cp ~/.gitconfig config/git/
 echo "Zsh backup"
