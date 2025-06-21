@@ -17,7 +17,10 @@ echo "Git backup"
 cp ~/.gitconfig config/git/
 echo "Zsh backup"
 cp ~/.zshrc config/zsh
-echo "Mimeapps backup"
+echo ".desktop backup"
+cp -r ~/.local/share/applications local/share/applications
+
+
 
 echo "Les configurations ont été copiées dans le répertoire courant."
 
