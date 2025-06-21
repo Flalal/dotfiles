@@ -16,6 +16,8 @@ cp -r config/hyprland/.config/nvim ~/.config/
 
 cp config/mimeapps/mimeapps.list ~/.config/
 
+cp -r local/share/applications ~/.local/share
+
 cp -r config/kitty ~/.config/
 cp -r config/git/.gitconfig ~/.gitconfig
 cp config/zsh/.zshrc ~/.zshrc
