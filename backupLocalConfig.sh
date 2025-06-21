@@ -18,7 +18,7 @@ cp ~/.gitconfig config/git/
 echo "Zsh backup"
 cp ~/.zshrc config/zsh
 echo ".desktop backup"
-cp -r ~/.local/share/applications local/share/applications
+cp -r ~/.local/share/applications local/share/
 
 
 
