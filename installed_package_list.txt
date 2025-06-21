@@ -18,6 +18,7 @@ kitty
 neofetch
 neovim
 network-manager-applet
+nwg-look
 overskride
 pavucontrol
 qutebrowser
