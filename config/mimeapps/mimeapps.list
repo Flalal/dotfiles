@@ -1,5 +1,8 @@
-
 [Default Applications]
 x-scheme-handler/discord=vesktop.desktop
 x-scheme-handler/https=vivaldi-stable.desktop
 x-scheme-handler/http=vivaldi-stable.desktop
+application/java-archive=jetbrains-idea.desktop
+
+[Added Associations]
+application/java-archive=jetbrains-idea.desktop;
