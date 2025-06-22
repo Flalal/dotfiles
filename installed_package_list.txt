@@ -9,6 +9,7 @@ dunst
 eza
 fastfetch
 fzf
+gdk-pixbuf
 grim
 hyprland
 hyprlock
@@ -30,6 +31,7 @@ thunar
 ttf-jetbrains-mono-nerd
 unrar
 unzip
+uv
 vesktop-bin
 vivaldi
 waybar
