@@ -1,0 +1,13 @@
+[Desktop Entry]
+
+Type=Application
+Version=2.0
+Name=WallPaper
+Comment=Wallpaper GUI
+Keywords=wallpaper;fond;ecran;
+# installer will place $HOME in /home/florian
+Path=/home/florian/.local/share/agemo
+Exec=/usr/bin/env uv run --project . agemo.py
+Icon=/home/florian/.local/share/agemo/assets/agemo.svg
+Terminal=false
+
