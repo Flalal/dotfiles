@@ -38,6 +38,7 @@ waybar
 wireguard-dkms
 wget
 wl-clipboard
+wlogout
 xdg-desktop-portal-hyprland
 yay
 zsh

@@ -7,6 +7,7 @@
     "hyprland/workspaces",
     "tray",
     "custom/lock",
+    "custom/logout",
     "custom/reboot",
     "custom/power"
   ],
@@ -48,21 +49,21 @@
   },
   "custom/lock": {
   "format": "<span color='#00FFFF'>  </span>",
-  "on-click": "hyprlock",
+  "on-click": "wlogout",
   "tooltip": true,
-  "tooltip-format": "锁屏"
+  "tooltip-format": "Lock Menu"
   },
   "custom/reboot": {
     "format": "<span color='#FFD700'>  </span>",
     "on-click": "systemctl reboot",
     "tooltip": true,
-    "tooltip-format": "重启"
+    "tooltip-format": "Reboot"
   },
   "custom/power": {
     "format": "<span color='#FF4040'>  </span>",
     "on-click": "systemctl poweroff",
     "tooltip": true,
-    "tooltip-format": "关机"
+    "tooltip-format": "Power Off"
   },
   "network": {
     "format-wifi": "<span color='#00FFFF'> 󰤨 </span>",

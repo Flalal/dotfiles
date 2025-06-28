@@ -7,6 +7,7 @@ cp -r ~/.config/rofi config/hyprland/.config/
 cp -r ~/.config/hypr config/hyprland/.config/
 cp -r ~/.config/nvim config/hyprland/.config/
 cp -r ~/.config/kitty config/
+cp -r ~/.config/wlogout config/
 echo "Mimeapps backup"
 cp ~/.config/mimeapps.list config/mimeapps
 
