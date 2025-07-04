@@ -17,8 +17,10 @@ hyprpaper
 intellij-idea-ultimate-edition
 jq
 kitty
+maven
 neovim
 network-manager-applet
+nvm
 nwg-look
 overskride
 pavucontrol
@@ -41,4 +43,5 @@ wl-clipboard
 wlogout
 xdg-desktop-portal-hyprland
 yay
+zip
 zsh
