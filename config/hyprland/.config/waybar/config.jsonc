@@ -149,7 +149,7 @@
     "on-click": "overskride",
     "format": "<span color='#00BFFF'>  </span>{status} ",
     "format-connected": "<span color='#00BFFF'>  </span>{device_alias} ",
-    "format-connected-battery": "<span color='#00BFFF'>  </span>{device_alias}{device_battery_percentage}% ",
+    "format-connected-battery": "<span color='#00BFFF'>  </span>{device_alias} {device_battery_percentage}% ",
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
