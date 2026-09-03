@@ -26,7 +26,11 @@ telemetry-on()     { export CC_TELEMETRY=on;  echo "télémétrie Auchan ACTIVÉ
 telemetry-off()    { export CC_TELEMETRY=off; echo "télémétrie coupée (shell courant)"; }
 telemetry-status() { echo "CC_TELEMETRY=$CC_TELEMETRY"; }
 
-# ── Proxy corp Auchan ─────────────────────────────────────────────────────────
+# ── Mode Auchan ───────────────────────────────────────────────────────────────
+#
+# Une seule bascule pour « je travaille pour Auchan » : le proxy corp et la
+# télémétrie ensemble. Les commandes telemetry-* restent utilisables seules —
+# voir l'avertissement plus bas, qui est la raison de les garder.
 #
 # Cette machine sert à la fois au parc perso et au travail. Le proxy n'est donc
 # JAMAIS posé globalement : un HTTPS_PROXY dans /etc/profile.d enverrait le
@@ -47,26 +51,35 @@ AUCHAN_PROXY="http://10.0.2.87:3128"
 # 10.0.0.0/8 les ferait sortir du proxy, donc échouer.
 AUCHAN_NO_PROXY="localhost,127.0.0.1,::1,.home,.local,10.0.2.0/24"
 
+# AVERTISSEMENT : `auchan-on` allume aussi la télémétrie. Dans un tel shell,
+# lancer `claude` sur le vault ou un projet perso enverrait cet usage au
+# collecteur d'Auchan. `telemetry-off` la recoupe sans toucher au proxy — d'où
+# le maintien des deux commandes séparées.
 auchan-on() {
   export HTTPS_PROXY="$AUCHAN_PROXY"
   export HTTP_PROXY="$AUCHAN_PROXY"
   export NO_PROXY="$AUCHAN_NO_PROXY"
   export https_proxy="$HTTPS_PROXY" http_proxy="$HTTP_PROXY" no_proxy="$NO_PROXY"
-  echo "proxy Auchan ACTIVÉ (shell courant) — $AUCHAN_PROXY"
+  export CC_TELEMETRY=on
+  echo "mode Auchan ACTIVÉ (shell courant)"
+  echo "  proxy      $AUCHAN_PROXY"
+  echo "  télémétrie activée — telemetry-off pour la couper seule"
 }
 
 auchan-off() {
   unset HTTPS_PROXY HTTP_PROXY NO_PROXY https_proxy http_proxy no_proxy
-  echo "proxy Auchan coupé (shell courant)"
+  export CC_TELEMETRY=off
+  echo "mode Auchan coupé (shell courant) — proxy et télémétrie"
 }
 
 auchan-status() {
   if [ -n "$HTTPS_PROXY" ]; then
-    echo "proxy   : $HTTPS_PROXY"
-    echo "direct  : $NO_PROXY"
+    echo "proxy      : $HTTPS_PROXY"
+    echo "direct     : $NO_PROXY"
   else
-    echo "proxy   : coupé"
+    echo "proxy      : coupé"
   fi
+  echo "télémétrie : $CC_TELEMETRY"
   command -v kubectl >/dev/null &&
-    echo "contexte: $(kubectl config current-context 2>/dev/null || echo aucun)"
+    echo "contexte   : $(kubectl config current-context 2>/dev/null || echo aucun)"
 }

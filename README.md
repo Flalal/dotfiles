@@ -50,13 +50,17 @@ Sans le fichier, le shell démarre normalement : seules ces commandes-là
 
 ## Bascules de la workstation
 
-Deux réglages ne valent que pour le shell courant, et rien n'est actif par
-défaut :
+Tout ne vaut que pour le shell courant, et rien n'est actif par défaut :
 
 | Commande | Effet |
 |---|---|
-| `auchan-on` / `auchan-off` / `auchan-status` | proxy corp Auchan, requis pour joindre les clusters GKE |
-| `telemetry-on` / `telemetry-off` / `telemetry-status` | télémétrie Auchan de Claude Code |
+| `auchan-on` / `auchan-off` / `auchan-status` | mode Auchan : proxy corp **et** télémétrie |
+| `telemetry-on` / `telemetry-off` / `telemetry-status` | la télémétrie seule |
+
+`auchan-on` allume la télémétrie avec le proxy. Dans un tel shell, lancer
+`claude` sur le vault ou un projet perso enverrait cet usage au collecteur
+d'Auchan : `telemetry-off` la recoupe sans toucher au proxy. C'est la raison
+pour laquelle les deux jeux de commandes coexistent.
 
 Le proxy n'est **jamais** posé globalement : la machine sert aussi au parc
 perso, et un `HTTPS_PROXY` système enverrait `git.home`, GitHub et les `tofu
