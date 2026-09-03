@@ -48,6 +48,21 @@ Variables attendues (macOS) :
 Sans le fichier, le shell démarre normalement : seules ces commandes-là
 échouent.
 
+## Bascules de la workstation
+
+Deux réglages ne valent que pour le shell courant, et rien n'est actif par
+défaut :
+
+| Commande | Effet |
+|---|---|
+| `auchan-on` / `auchan-off` / `auchan-status` | proxy corp Auchan, requis pour joindre les clusters GKE |
+| `telemetry-on` / `telemetry-off` / `telemetry-status` | télémétrie Auchan de Claude Code |
+
+Le proxy n'est **jamais** posé globalement : la machine sert aussi au parc
+perso, et un `HTTPS_PROXY` système enverrait `git.home`, GitHub et les `tofu
+plan` du Proxmox par le proxy d'entreprise. Le `/24` de la maison est dans
+`NO_PROXY` pour la même raison.
+
 ## Dépendances
 
 Le socle dégrade proprement quand un outil manque — `eza`, `lsd`, `fzf`, `fd`
