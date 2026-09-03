@@ -59,8 +59,10 @@ printf '%s\n' "$machine" > "$marker_dir/machine"
 echo "   marqueur : $marker_dir/machine = $machine"
 
 # Les secrets ne sont pas dans le dépôt (cf. README). Sans le fichier, le shell
-# démarre quand même — mais claude-pro et litellm-budget échoueront en silence.
-if [ ! -f "$HOME/.zshrc.secrets" ]; then
+# démarre quand même — mais claude-pro et litellm-budget échouent en silence.
+# Seul le Mac en attend : ailleurs, l'absence est normale et ne mérite pas
+# d'avertissement à chaque déploiement.
+if [ "$machine" = "mac" ] && [ ! -f "$HOME/.zshrc.secrets" ]; then
   echo "⚠  ~/.zshrc.secrets absent — cf. README.md pour les variables attendues"
 fi
 
