@@ -45,12 +45,6 @@ alias oc='OPENCODE_EXPERIMENTAL_PLAN_MODE=1 opencode'
 
 # --- Auchan ------------------------------------------------------------------
 
-alias baka="kubectx baka"
-alias cane="kubectx cane"
-alias bobo="kubectx bobo"
-alias coco="kubectx coco"
-alias dodo="kubectx dodo"
-
 alias runnettools="kubectl run ffltools --image=registry.auchanlab.com/digit/multitools:1.0.0 --rm -it --restart=Never --command -- /bin/sh"
 
 # Netskope : VM relais 10.0.2.87. Le navigateur passe par la PAC

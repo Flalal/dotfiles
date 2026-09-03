@@ -50,6 +50,20 @@ alias klo="k logs -f"
 alias kns="kubens"
 alias kctx="kubectx"
 
+# Raccourcis de contexte. Dans le socle et non dans un fragment : ce sont des
+# appels à kubectx, valables sur toute machine dont le kubeconfig porte ces
+# noms courts — et depuis le 2026-09-04, la workstation aussi.
+#
+# Les noms courts ne sont pas ceux que `gcloud container clusters
+# get-credentials` génère : il produit des gke_<projet>_<région>_<cluster>. Le
+# renommage se fait par `kubectx <court>=<long>`, à refaire pour tout cluster
+# ajouté plus tard.
+alias baka="kubectx baka"
+alias cane="kubectx cane"
+alias bobo="kubectx bobo"
+alias coco="kubectx coco"
+alias dodo="kubectx dodo"
+
 alias untar="tar -xvf"
 alias jwt-decode="jq -R 'split(\".\") | .[1] | @base64d | fromjson'"
 
