@@ -31,6 +31,12 @@ if [ "$repo" != "$HOME/dotfiles" ]; then
   exit 1
 fi
 
+# Compteur de gestes réels, rendu en fin de sortie. Ansible s'en sert pour son
+# verdict de changement : déduire celui-ci d'une sous-chaîne du texte est
+# fragile — « déjà lié » contient « lié », et le rôle se déclarait modifié à
+# chaque passage.
+changed=0
+
 link() {
   local src="$1" dest="$2"
 
@@ -38,6 +44,8 @@ link() {
     echo "   déjà lié : $dest"
     return
   fi
+
+  changed=$((changed + 1))
 
   if [ -e "$dest" ] || [ -L "$dest" ]; then
     local backup="$dest.bak-$(date +%Y-%m-%d-%H%M%S)"
@@ -54,9 +62,15 @@ link "$repo/zshrc" "$HOME/.zshrc"
 link "$repo/p10k.zsh" "$HOME/.p10k.zsh"
 
 marker_dir="${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles"
+marker="$marker_dir/machine"
 mkdir -p "$marker_dir"
-printf '%s\n' "$machine" > "$marker_dir/machine"
-echo "   marqueur : $marker_dir/machine = $machine"
+if [ ! -f "$marker" ] || [ "$(cat "$marker")" != "$machine" ]; then
+  printf '%s\n' "$machine" > "$marker"
+  changed=$((changed + 1))
+  echo "   marqueur : $marker = $machine"
+else
+  echo "   marqueur déjà posé : $marker = $machine"
+fi
 
 # Les secrets ne sont pas dans le dépôt (cf. README). Sans le fichier, le shell
 # démarre quand même — mais claude-pro et litellm-budget échouent en silence.
@@ -66,4 +80,5 @@ if [ "$machine" = "mac" ] && [ ! -f "$HOME/.zshrc.secrets" ]; then
   echo "⚠  ~/.zshrc.secrets absent — cf. README.md pour les variables attendues"
 fi
 
+echo "changed=$changed"
 echo "fait. Ouvrir un nouveau shell, ou : exec zsh"
