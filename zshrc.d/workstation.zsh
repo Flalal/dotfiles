@@ -88,3 +88,41 @@ auchan-status() {
   command -v kubectl >/dev/null &&
     echo "contexte   : $(kubectl config current-context 2>/dev/null || echo aucun)"
 }
+
+# ── Claude Code par la passerelle interne d'Auchan ────────────────────────────
+#
+# Même bascule que sur le poste : Claude Code parle à LiteLLM
+# (api-private-yoda) au lieu d'api.anthropic.com. La clé vient de
+# ~/.zshrc.secrets, rendu par Ansible depuis sops.
+#
+# Deux écarts avec le poste, tous deux tenant à la machine :
+#
+#   - pas de NODE_TLS_REJECT_UNAUTHORIZED=0. Les autorités Netskope sont dans
+#     le magasin du système et dans NODE_EXTRA_CA_CERTS : la chaîne se vérifie
+#     pour de bon. Le poste, lui, désarme le contrôle faute de les avoir.
+#
+#   - tout se passe dans un SOUS-SHELL. Sur le poste, les exports survivent à
+#     la commande : le shell reste ensuite pointé sur la passerelle d'Auchan,
+#     et chaque `claude` suivant y part sans que rien ne le dise.
+#
+# La télémétrie est allumée pour cet appel-là seulement : l'usage EST celui
+# d'Auchan, mais le shell appelant garde le sien.
+claude-pro() {
+  if [ -z "$AUCHAN_LITELLM_KEY" ]; then
+    echo "AUCHAN_LITELLM_KEY absente de ~/.zshrc.secrets" >&2
+    return 1
+  fi
+  (
+    export ANTHROPIC_BASE_URL="https://api-private-yoda.ari.internal.auchan.com/corp/v2/aia"
+    export ANTHROPIC_AUTH_TOKEN="$AUCHAN_LITELLM_KEY"
+    export ANTHROPIC_MODEL="claude-sonnet-4-6"
+    export ANTHROPIC_SMALL_FAST_MODEL="claude-sonnet-4-6"
+    export CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=1
+    export HTTPS_PROXY="$AUCHAN_PROXY" HTTP_PROXY="$AUCHAN_PROXY"
+    export NO_PROXY="$AUCHAN_NO_PROXY"
+    export https_proxy="$AUCHAN_PROXY" http_proxy="$AUCHAN_PROXY"
+    export no_proxy="$AUCHAN_NO_PROXY"
+    export CC_TELEMETRY=on
+    cd ~/Documents/obsidian && claude "$@"
+  )
+}
