@@ -7,6 +7,11 @@
 # globaux installés depuis ce compte.
 export PATH="$HOME/.npm-global/bin:$PATH"
 
+# Les shims d'asdf, par lesquels `java` et `mvn` existent. Placés APRÈS le
+# préfixe npm dans le fichier, donc devant lui dans le PATH — sans conséquence :
+# asdf ne porte ici ni `nodejs` ni `python`, et la garde du rôle l'interdit.
+export PATH="$HOME/.asdf/shims:$PATH"
+
 # La télémétrie Auchan est déclarée dans settings.json, partagé par git avec le
 # Mac. Elle est neutralisée ici par --settings, seul niveau de précédence
 # au-dessus des fichiers (hors managed) : il n'existe pas de settings.local.json
